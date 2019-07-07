@@ -1,0 +1,24 @@
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: automation-hw
+  namespace: demo
+  labels:
+    origin: flux
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.workload: glob:test-*
+    flux.weave.works/tag.opa: semver:~1.0
+spec:
+  releaseName: automation-hw
+  chart:
+    #git: https://pumapathy%40statestreet.com:Hethesh%40303@github.dev.us-east-1.aws.galleon.c.statestr.com/e640211/flux-hello-world-openshift.git
+    #git: git@github.dev.us-east-1.aws.galleon.c.statestr.com:e640211/flux-hello-world-openshift.git
+    #ref: master
+    #path: charts/hello-hw
+    repository: https://artifactory.galleon.c.statestr.com/artifactory/helm-test-v/
+    name: helm-hw
+    version: 1.0.0
+  #values:
+    #image.repository: artifactory.galleon.c.statestr.com/docker-test/docker-hw
+    #image.tag: v2
